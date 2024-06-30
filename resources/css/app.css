@@ -40,7 +40,8 @@
     margin: 0 auto;
 }
 .note {
-    background-color: #f0c806;
+    background-color: #fceea8;
+    padding: 10px;
     border-radius: 8px;
     width: 280px;
     margin: 0 10px 20px;
