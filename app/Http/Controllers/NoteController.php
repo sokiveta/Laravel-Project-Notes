@@ -60,6 +60,9 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         return view('note.edit',['note' => $note]);
     }
 
@@ -68,6 +71,9 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         $data = $request->validate([
             'note' => ['required', 'string']
         ]);
@@ -83,6 +89,9 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
+        if ($note->user_id !== request()->user()->id) {
+            abort(403);
+        }
         $note->delete();
         return to_route('note.index')->with('message', 'Note was deleted');
     }
